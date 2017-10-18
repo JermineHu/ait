@@ -1,9 +1,8 @@
 package controller
 
 import (
-	. "git.vdo.space/berk/common"
-	ml "git.vdo.space/berk/model"
-	"git.vdo.space/foy/model"
+	. "github.com/JermineHu/ait/common"
+	ml "github.com/JermineHu/ait/model"
 	"git.vdo.space/foy/proto"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -19,7 +18,7 @@ func (m *FController) UserList(req *proto.RequestParams) (*ResultModel, error) {
 
 		//return nil, model.NewError(err)
 
-		rm.Errors = append(rm.Errors, model.NewError(err))
+		rm.Errors = append(rm.Errors, ml.NewError(err))
 	} else {
 		pm := PageModelBase{}
 		pm.PageData = ts
@@ -38,7 +37,7 @@ func (m *FController) UserDetailByIDs(ids []*bson.ObjectId) (*ResultModel, error
 	ts, err := ml.GetUserByIDs(ids)
 
 	if err != nil {
-		rm.Errors = append(rm.Errors, model.NewError(err))
+		rm.Errors = append(rm.Errors, ml.NewError(err))
 	} else {
 		rm.Data = ts
 	}
@@ -54,7 +53,7 @@ func (m *FController) UserDetailByName(name string) (*ResultModel, error) {
 	ts, err := ml.GetUserByName(name)
 
 	if err != nil {
-		rm.Errors = append(rm.Errors, model.NewError(err))
+		rm.Errors = append(rm.Errors, ml.NewError(err))
 	} else {
 		rm.Data = ts
 	}

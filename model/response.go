@@ -3,7 +3,7 @@ package model
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/jerminehu/ait/utils"
+	"github.com/JermineHu/ait/utils"
 )
 
 //TODO 错误的代码可能不需要几个 之后可以合并

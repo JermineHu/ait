@@ -1,7 +1,7 @@
 package model
 
 import (
-	"git.vdo.space/berk/consts"
+	"github.com/JermineHu/ait/consts"
 	"git.vdo.space/foy/model"
 	"gopkg.in/mgo.v2"
 	"strings"

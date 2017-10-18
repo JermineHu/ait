@@ -2,9 +2,9 @@ package handler
 
 import (
 	"errors"
-	"git.vdo.space/berk/conf"
-	. "github.com/jerminehu/ait/consts"
-	. "github.com/jerminehu/ait/controller"
+	"github.com/JermineHu/ait/conf"
+	. "github.com/JermineHu/ait/consts"
+	. "github.com/JermineHu/ait/controller"
 	"git.vdo.space/foy/model"
 	"git.vdo.space/foy/utils"
 	"github.com/chanxuehong/wechat.v2/mp/core"

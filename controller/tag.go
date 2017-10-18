@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"git.vdo.space/berk/model"
+	"github.com/JermineHu/ait/model"
 	dm "git.vdo.space/foy/model"
 	"git.vdo.space/foy/proto"
 	"gopkg.in/mgo.v2/bson"

@@ -1,8 +1,8 @@
 package common
 
 import (
-	"github.com/jerminehu/ait/model"
-	"github.com/jerminehu/ait/utils"
+	"github.com/JermineHu/ait/model"
+	"github.com/JermineHu/ait/utils"
 )
 
 var (

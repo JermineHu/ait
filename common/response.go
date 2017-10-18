@@ -2,7 +2,7 @@ package common
 
 import (
 	"encoding/json"
-	"github.com/jerminehu/ait/model"
+	"github.com/JermineHu/ait/model"
 )
 
 type PageModelBase struct {

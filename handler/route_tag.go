@@ -1,11 +1,11 @@
 package handler
 
 import (
-	. "github.com/jerminehu/ait/common"
-	. "git.vdo.space/berk/consts"
+	. "github.com/JermineHu/ait/common"
+	. "github.com/JermineHu/ait/consts"
 	"git.vdo.space/foy/model"
-	ml "github.com/jerminehu/ait/model"
-	. "github.com/jerminehu/ait/controller"
+	ml "github.com/JermineHu/ait/model"
+	. "github.com/JermineHu/ait/controller"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/mgo.v2/bson"
 )

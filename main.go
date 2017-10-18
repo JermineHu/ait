@@ -2,21 +2,17 @@ package main
 
 import (
 	"github.com/labstack/echo"
-	"github.com/jerminehu/ait/common"
+	"github.com/JermineHu/ait/common"
 	"github.com/graphql-go/handler"
-	"./route"
 	"github.com/dgrijalva/jwt-go"
 	"time"
 	"github.com/labstack/echo/middleware"
 	"net/http"
-	"github.com/jerminehu/ait/graphql"
+	"github.com/JermineHu/ait/graphql"
+	"fmt"
+	"github.com/gorilla/websocket"
+	"github.com/JermineHu/ait/route"
 )
-
-func init()  {
-
-
-}
-
 // jwtCustomClaims are custom claims extending default ones.
 type jwtCustomClaims struct {
 	Name  string `json:"name"`
@@ -24,6 +20,7 @@ type jwtCustomClaims struct {
 	jwt.StandardClaims
 }
 
+// a jwt test for login handler
 func login(c echo.Context) error {
 	username := c.FormValue("username")
 	password := c.FormValue("password")
@@ -64,6 +61,35 @@ func restricted(c echo.Context) error {
 	claims := user.Claims.(*jwtCustomClaims)
 	name := claims.Name
 	return c.String(http.StatusOK, "Welcome "+name+"!")
+}
+
+
+var (
+	upgrader = websocket.Upgrader{}
+)
+
+// a websocket test for handler
+func hello(c echo.Context) error {
+	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
+	if err != nil {
+		return err
+	}
+	defer ws.Close()
+
+	for {
+		// Write
+		err := ws.WriteMessage(websocket.TextMessage, []byte("Hello, Client!"))
+		if err != nil {
+			c.Logger().Error(err)
+		}
+
+		// Read
+		_, msg, err := ws.ReadMessage()
+		if err != nil {
+			c.Logger().Error(err)
+		}
+		fmt.Printf("%s\n", msg)
+	}
 }
 
 func main() {
@@ -115,8 +141,14 @@ func main() {
 	r.GET("", restricted)
 
 
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+	e.Static("/", "assets")
+	e.GET("/ws", hello)
+	e.Logger.Fatal(e.Start(":1323"))
+
 	e.Debug=true
 	e.HideBanner=true
-	e.Logger.Fatal(route.Mean{e}.Engine().StartTLS(":443","certs/server.crt","certs/server.key"))
+	e.Logger.Fatal(route.Mean{e}.Engine().Echo.StartTLS(":443","certs/server.crt","certs/server.key"))
 
 }

@@ -1,8 +1,8 @@
 package route
 
 import (
-	. "github.com/jerminehu/ait/consts"
-	 "github.com/jerminehu/ait/handler"
+	. "github.com/JermineHu/ait/consts"
+	 "github.com/JermineHu/ait/handler"
 	"os"
 	"strings"
 	"github.com/labstack/echo"
@@ -29,30 +29,30 @@ func (c *CustomContext) Bar() {
 }
 
 type Mean struct {
-	*echo.Echo
+	Echo *echo.Echo
 }
 
 func (m Mean) Engine() *Mean {
 
 	// Global middleware
-	m.Use(CheckDBSession)
+	m.Echo.Use(CheckDBSession)
 	//m.Use(middleware.CSRF())
-	m.Use(middleware.BodyLimit("2M"))
-	m.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
+	m.Echo.Use(middleware.BodyLimit("2M"))
+	m.Echo.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"https://b.daocloud.io", "https://b.daocloud.io"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
-	m.Use(middleware.Logger())
-	m.Use(middleware.Recover())
+	m.Echo.Use(middleware.Logger())
+	m.Echo.Use(middleware.Recover())
 	// new relic monitor
 	//gorelic.InitNewrelicAgent("f243fdc54ca4b221bbabef85444e798a6d946335", "Berk", false)
 	//m.Route.Use(gorelic.Handler)
 
-	m.Use(InitHandler)
-	m.Use(HeaderErrorHandler)
-	m.Use(ErrorHandler)
+	m.Echo.Use(InitHandler)
+	m.Echo.Use(HeaderErrorHandler)
+	m.Echo.Use(ErrorHandler)
 
-	back := m.Group(BackendGroupRouteModuleName)
+	back := m.Echo.Group(BackendGroupRouteModuleName)
 	{
 
 		v1 := back.Group(GroupRouteVersion1Key)
@@ -61,6 +61,7 @@ func (m Mean) Engine() *Mean {
 			if !strings.EqualFold(os.Getenv("IsDebug"), "true") {
 				v1.Use(handler.AuthorizationHandler)
 			}
+			handler.WrapChatRoutes(v1)
 			//handler.WrapUserRoutes(v1)
 			//handler.WrapArticleRoutes(v1)
 			//handler.WrapTagRoutes(v1)
@@ -72,7 +73,7 @@ func (m Mean) Engine() *Mean {
 
 	}
 
-	res := m.Group(ResourcesGroupRouteModuleName)
+	res := m.Echo.Group(ResourcesGroupRouteModuleName)
 	{
 
 		res.Static("/", os.Getenv(ResourcesPath))

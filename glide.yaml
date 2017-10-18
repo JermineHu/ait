@@ -1,0 +1,48 @@
+package: github.com/JermineHu/ait
+import:
+- package: git.ngs.tech/mean/daniel/model
+- package: git.ngs.tech/mean/daniel/proto
+- package: git.ngs.tech/mean/daniel/utils
+- package: git.ngs.tech/mean/icarus/model
+- package: git.vdo.space/foy/config
+- package: git.vdo.space/foy/model
+- package: git.vdo.space/foy/proto
+- package: git.vdo.space/foy/utils
+- package: github.com/Sirupsen/logrus
+- package: github.com/chanxuehong/wechat.v2
+  subpackages:
+  - mp/core
+  - mp/jssdk
+  - oauth2
+  - open/oauth2
+- package: github.com/dgrijalva/jwt-go
+- package: github.com/gin-gonic/gin
+- package: github.com/gorilla/websocket
+- package: github.com/graphql-go/graphql
+- package: github.com/graphql-go/handler
+- package: github.com/jinzhu/gorm
+- package: github.com/labstack/echo
+  subpackages:
+  - middleware
+- package: github.com/micro/go-micro
+  subpackages:
+  - broker
+  - client
+  - cmd
+  - registry
+  - registry/consul
+  - server
+- package: github.com/micro/go-os
+  subpackages:
+  - config
+  - config/source/consul
+  - trace
+- package: github.com/micro/protobuf
+  subpackages:
+  - proto
+- package: github.com/satori/go.uuid
+- package: golang.org/x/net/context
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson
+- package: gopkg.in/redis.v3

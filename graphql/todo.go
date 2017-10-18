@@ -2,7 +2,7 @@ package graphql
 
 import (
 	"github.com/graphql-go/graphql"
-	. "github.com/jerminehu/ait/model"
+	. "github.com/JermineHu/ait/model"
 )
 
 // define custom GraphQL ObjectType `todoType` for our Golang struct `Todo`

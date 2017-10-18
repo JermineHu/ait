@@ -1,14 +1,14 @@
 package route
 
 import (
-	"github.com/jerminehu/ait/common"
-	. "github.com/jerminehu/ait/consts"
-	"github.com/jerminehu/ait/model"
-	"github.com/jerminehu/ait/utils"
+	"github.com/JermineHu/ait/common"
+	. "github.com/JermineHu/ait/consts"
+	"github.com/JermineHu/ait/model"
 	"github.com/gin-gonic/gin"
 	"log"
 	"runtime/debug"
 	"github.com/labstack/echo"
+	"github.com/JermineHu/ait/utils"
 )
 
 type BodyError struct {

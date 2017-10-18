@@ -1,7 +1,7 @@
 package common
 
 import (
-	ml "git.vdo.space/berk/model"
+	ml "github.com/JermineHu/ait/model"
 	"git.vdo.space/foy/model"
 	"github.com/jinzhu/gorm"
 	"github.com/micro/go-micro/broker"

@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"git.vdo.space/berk/common"
 	"gopkg.in/mgo.v2"
+	"github.com/JermineHu/ait/common"
 )
 
 type FController struct {
@@ -11,6 +11,6 @@ type FController struct {
 
 func NewFController(MDBSession *mgo.Session, MDB *mgo.Database) *FController {
 	mc := &FController{}
-	mc.MDB = MDB
+	//mc.MDB = MDB
 	return mc
 }

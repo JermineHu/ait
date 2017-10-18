@@ -9,10 +9,9 @@ import (
 	"github.com/micro/go-micro/registry"
 	"github.com/micro/go-micro/registry/consul"
 	"github.com/micro/go-micro/server"
-	"github.com/micro/go-platform/config"
-	config_consul "github.com/micro/go-platform/config/source/consul"
-	"github.com/micro/go-platform/trace"
-	"github.com/micro/go-platform/trace/zipkin"
+	"github.com/micro/go-os/config"
+	config_consul "github.com/micro/go-os/config/source/consul"
+	"github.com/micro/go-os/trace"
 	"golang.org/x/net/context"
 	"log"
 	"os"
@@ -76,7 +75,7 @@ func InitTracer() trace.Trace {
 		log.Fatal("[Loading] Config must be inited before init tracer")
 	}
 
-	tracer = zipkin.NewTrace(
+	tracer = trace.NewTrace(
 		trace.Collectors(Conf_GetValue(ZIPKIN_ADDRESS)),
 	)
 	return tracer

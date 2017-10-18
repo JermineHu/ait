@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 	"os"
-	. "git.vdo.space/berk/consts"
+	. "github.com/JermineHu/ait/consts"
 )
 
 type ArticleStatus int32

@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	. "git.vdo.space/berk/consts"
-	"git.vdo.space/berk/model"
+	. "github.com/JermineHu/ait/consts"
+	"github.com/JermineHu/ait/model"
 	dm "git.vdo.space/foy/model"
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/labstack/echo"
-	. "github.com/jerminehu/ait/controller"
+	. "github.com/JermineHu/ait/controller"
 )
 
 type bufferedWriter struct {

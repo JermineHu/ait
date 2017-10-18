@@ -138,6 +138,10 @@ const (
 	LotteryDrawDeleteByIDsRoute = `winning`              //Delete
 )
 
+const (
+	ChatRoomRoute="/chat/in"
+)
+
 var ImageFileExts = []string{".png", ".jpeg", ".jpg", ".bmp", ".gif"}
 
 var FilterFileExts = []string{".3dl", ".cube", ".png"}

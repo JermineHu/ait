@@ -1,8 +1,8 @@
 package controller
 
 import (
-	. "git.vdo.space/berk/common"
-	ml "git.vdo.space/berk/model"
+	. "github.com/JermineHu/ait/common"
+	ml "github.com/JermineHu/ait/model"
 	"git.vdo.space/foy/model"
 	"git.vdo.space/foy/proto"
 	"git.vdo.space/foy/utils"
