@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"sync"
 	"github.com/gorilla/websocket"
+	"html/template"
 )
 
 const MAX_CONNECTION int = 100
@@ -55,6 +56,7 @@ func log4Demo(msg string) {
 
 func WrapChatRoutes(c *echo.Group) {
 	ChatHandler(c)
+	ChatIndexPageHandler(c)
 }
 
 var (
@@ -92,6 +94,19 @@ var (
 		}
 		return
 	}
-	c.POST(ChatRoomRoute, h)
+	c.GET(ChatRoomRoute, h)
 
+}
+
+func ChatIndexPageHandler(c *echo.Group) {
+	h := func(c echo.Context) (err error) {
+		t, _ := template.ParseFiles("assets/test.html")
+		err=t.Execute(c.Response().Writer, nil)
+		if err!=nil {
+			log4Demo("Page Err:" + err.Error())
+			return
+		}
+		return
+	}
+	c.GET(ChatRoomIndexPageRoute, h)
 }

@@ -145,7 +145,7 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Static("/", "assets")
 	e.GET("/ws", hello)
-	e.Logger.Fatal(e.Start(":1323"))
+	//e.Logger.Fatal(e.Start(":1323"))
 
 	e.Debug=true
 	e.HideBanner=true

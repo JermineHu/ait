@@ -42,7 +42,16 @@
 
 <script type="text/javascript">
     var sock = null;
-    var wsuri = "ws://192.168.0.103:1234/chat/in";
+
+    var loc = window.location;
+    var wsuri = 'ws:';
+
+    if (loc.protocol === 'https:') {
+        wsuri = 'wss:';
+    }
+    wsuri += '//' + loc.host;
+    wsuri += loc.pathname + '/in';
+
     window.onload = function() {
         sock = new WebSocket(wsuri);
         sock.onmessage = function(e) {

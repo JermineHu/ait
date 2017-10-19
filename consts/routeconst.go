@@ -20,7 +20,7 @@ const (
 
 // 版本号
 const (
-	GroupRouteVersion1Key = `/v1` //版本号
+	GroupRouteVersion1Key = `/v1/` //版本号
 )
 
 // Controller Key
@@ -139,7 +139,8 @@ const (
 )
 
 const (
-	ChatRoomRoute="/chat/in"
+	ChatRoomRoute="chat/in"
+	ChatRoomIndexPageRoute="chat"
 )
 
 var ImageFileExts = []string{".png", ".jpeg", ".jpg", ".bmp", ".gif"}
